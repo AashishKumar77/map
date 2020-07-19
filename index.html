@@ -58,17 +58,93 @@
         font-weight: 500;
         padding: 6px 12px;
       }
+	  .map-section{position:relative;}
+.postaddbtn {
+    position: absolute;
+    background: #D50320;
+    color: #fff;
+    padding: 8px 10px;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    border-radius: 20px;
+    z-index: 999;
+    border: none;
+    margin: auto;
+    width: 160px;
+    font-weight: 500;
+}
+	  .map-header-part{background:#D50320;padding:8px 10px;}
+	  .header-leftpart{float:left;}
+	  .header-rightpart{float:right;}
+	  .centerlogo-part { width: 100px;margin-left:43%;float:left;color:#fff;}
+.searchinput {
+    animation-name: endBrowserAutofill;
+    position: absolute;
+    z-index: 999;
+    top: 63px;
+    width: 60%; 
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 47px;
+    padding: 22px 19px;
+}
+.centerlogo-part h2{margin-bottom:0px;}
+@media screen and (max-width:1024px){
+  .centerlogo-part{margin-left:42%;}
+  .searchinput{width:50%;}
+  }
+ 
+
+  @media screen and (max-width:992px){
+  .centerlogo-part{margin-left:39%;}
+  .searchinput{left:18%;}
+  }
+   @media screen and (max-width:600px){
+   .searchinput {
+    left: 25%;
+    width: 240px;
+}
+  .centerlogo-part{margin-left:35%;}
+  .centerlogo-part h2 {
+    margin-bottom: 0px;
+    font-size: 23px;
+}
+  }
+  
+  @media screen and (max-width:450px){
+  .searchinput {
+    left: 0;
+    width: 96%;
+    top: 100px;
+}
+}
     </style>
   </head>
   <body>
-    <div>
-      <div id="title">
-        Autocomplete search
-      </div>
-        <input id="pac-input" type="text" class="form-control" placeholder="Enter a location" />
-      </div>
-    </div>
+ 
+       <header class="map-header-part">
+	      <div class="header-leftpart">
+		  <span> <img src="images/left-icon.png"></span>
+		  </div>
+		  <div class="centerlogo-part">
+		  <h2>LOGO</h2>
+		  </div>
+		  <div class="header-rightpart">
+		  <span> <img src="images/right-icon.png"></span>
+		  </div>
+		  <div class="clearfix"></div>
+	   </header>
+       
+     
+
+   
+    <input id="pac-input" type="text" class="form-control searchinput" placeholder="Enter a location" />
+   <input type="button" class="postaddbtn" value="POST YOUR AD">
+ 
     <div id="map"></div>
+     
 
     <script>
       function initMap() {
@@ -85,7 +161,7 @@
         map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
 
         var autocomplete = new google.maps.places.Autocomplete(input);
-
+ 
         // Bind the map's bounds (viewport) property to the autocomplete object,
         // so that the autocomplete requests use the current map bounds for the
         // bounds option in the request.
@@ -111,6 +187,7 @@
           infowindow.close();
           marker.setVisible(false);
           var place = autocomplete.getPlace();
+		  
           if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
             // pressed the Enter key, or the Place Details request failed.
@@ -131,6 +208,7 @@
           marker.setVisible(true);
 
           var address = "";
+		 
           if (place.address_components) {
             address = [
               (place.address_components[0] &&
@@ -171,8 +249,13 @@
             console.log("Checkbox clicked! New state=" + this.checked);
             autocomplete.setOptions({ strictBounds: this.checked });
           });
+		  
       }
     </script>
-    
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBONc0lNdShjKIQKFPaEsYcsaeUDjdkNOU&libraries=places&callback=initMap"
+      async
+      defer
+    ></script>
   </body>
 </html>

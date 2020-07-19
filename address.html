@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place Autocomplete</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <style>
+	.btn-danger {background:#D50320}
+	.form-part{margin:20px auto 0px; max-width:600px; padding:20px ; width:100%;border:1px solid #ddd; overflow:hidden}
+	.form-part label{font-weight:600;}
+	.form-part .form-control{border:none; border-bottom:1px solid #ddd;border-radius:0px;background:none;padding-left:0px;}
+		.form-part .form-control:focus{box-shadow:none;}
+	textarea.form-control{resize:none;min-height:100px;}
+     .uploadphoto {
+    position: relative;
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    border: 1px dashed #D50320;
+}
+	 .uploadphoto{position:relative}
+	 .uploadinput{position:absolute; left:0; top:0; width:100%; height:100%; z-index:9;opacity:0;}
+.postaddbtn {
+    position: absolute;
+    background: #D50320;
+    color: #fff;
+    padding: 8px 10px;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    border-radius: 20px;
+    z-index: 999;
+    border: none;
+    margin: auto;
+    width: 160px;
+    font-weight: 500;
+}
+	  .map-header-part{background:#D50320;padding:8px 10px;}
+	  .header-leftpart{float:left;}
+	  .header-rightpart{float:right;}
+	  .centerlogo-part { width: 100px;margin-left:43%;float:left;color:#fff;}
+.searchinput {
+    animation-name: endBrowserAutofill;
+    position: absolute;
+    z-index: 999;
+    top: 63px;
+    width: 60%; 
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 47px;
+    padding: 22px 19px;
+}
+.centerlogo-part h2{margin-bottom:0px;}
+@media screen and (max-width:1024px){
+  .centerlogo-part{margin-left:42%;}
+  .searchinput{width:50%;}
+  }
+ 
+
+  @media screen and (max-width:992px){
+  .centerlogo-part{margin-left:39%;}
+  .searchinput{left:18%;}
+  }
+   @media screen and (max-width:600px){
+   .searchinput {
+    left: 25%;
+    width: 240px;
+}
+  .centerlogo-part{margin-left:35%;}
+  .centerlogo-part h2 {
+    margin-bottom: 0px;
+    font-size: 23px;
+}
+  }
+  
+  @media screen and (max-width:450px){
+  .searchinput {
+    left: 0;
+    width: 96%;
+    top: 100px;
+}
+}
+    </style>
+  </head>
+  <body>
+ 
+       <header class="map-header-part">
+	      <div class="header-leftpart">
+		  <span> <img src="images/back-arrow.png"></span>
+		  </div>
+		  <div class="centerlogo-part">
+		  <h2>LOGO</h2>
+		  </div>
+		  <!-- <div class="header-rightpart"> -->
+		  <!-- <span> <img src="images/right-icon.png"></span> -->
+		  <!-- </div> -->
+		  <div class="clearfix"></div>
+	   </header>
+    
+<div class="form-part">
+  <form>
+<div class="form-group">
+ <div class="uploadphoto">
+   <img src="images/add-photo.png">
+   <input type="file" class="uploadinput">
+ </div>
+</div>
+     <div class="form-group">
+	   <label>Property Address</label>
+	   <input type="text" class="form-control" placeholder="Address">
+	 </div>
+	  <div class="form-group">
+	   <label>Property Title</label>
+	   <input type="text" class="form-control" placeholder="Title">
+	 </div>
+	  <div class="form-group">
+	   <label>Describe more about 	your property</label>
+	   <textarea class="form-control" placeholder="Enter any notes here..."></textarea>
+	 </div>
+	 <input type="button" class="btn btn-danger float-right" value="Submit">
+</form>
+</div>     
+
+    
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBONc0lNdShjKIQKFPaEsYcsaeUDjdkNOU&libraries=places&callback=initMap"
+      async
+      defer
+    ></script>
+  </body>
+</html>
